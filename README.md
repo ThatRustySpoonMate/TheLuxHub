@@ -6,6 +6,7 @@ An Open-source dash software that runs on an Arduino/ESP32 and integrates with s
 
 The main motivator of this project is so that I don't have to drill holes and run sensor cables throughout the ol' Hilux. Of course this will be an option, however there are multiple wireless transfer methods that can be used. 
 
+<h2>Supported peripherals and boards</h2>
 
 Supported methods of data transfer:
  - LoRa (SX1276)
