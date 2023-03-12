@@ -9,7 +9,7 @@
 
 // TODO: Add support for NRF24L01+ and other wireless modules
 
-/** Define connected peripherals **/
+/** Define connected peripherals --------------------------------------------------- **/
 #define LORA_MODULE 0 // 0 = Disabled, 1 = SX1276
 #define DISPLAY 0 // 0 = Disabled, 1 = 
 #define ADC 1 // 0 = Disabled, 1 = Internal, 2 = ADS1115
@@ -36,7 +36,7 @@
 #endif
 
 
-/** Define pins **/
+/** Define pins --------------------------------------------------- **/
 #if LORA_MODULE == 1
     #define LORA_CS_PIN 18 // Chip select
     #define LORA_RST_PIN 14 // Reset pin
@@ -46,7 +46,7 @@
 
 #define UserButton 38 // Button on the board that is used to cycle through pages
 
-/** Define structs -- Maybe do this as one main data source that then has a pointer to the data source type **/
+/** Define struct --------------------------------------------------- **/
 struct WirelessDataSource {
   uint8_t packetID;         // ID of the Wireless packet to look for
   uint32_t pollFreq : 500;  // Frequency to update this data source -- Likely not used and will be placed in widget instead
