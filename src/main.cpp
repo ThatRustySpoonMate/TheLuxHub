@@ -7,6 +7,12 @@ AnalogDataSource EGTSensor;
 LoRaDataSource StarterVoltage;
 LoRaDataSource CurrentSens1;
 
+// Create Widget for each Data Source
+
+// Create Page and apply above widgets to the pages
+
+// Create dashboard to display the pages
+
 
 
 void setup() {

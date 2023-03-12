@@ -27,7 +27,7 @@ The node software will be produced separately and can be found here:
 
 
 <h2>Example uses</h2>
-RTD sensor plumbed into downpipe wired directly to Master board as an EGT.<br>
+RTD sensor plumbed into downpipe wired directly to Master board as an EGT.
 
 Temperature/Humidity (e.g. DHT22) Sensors monitoring battery temp, engine bay temp etc.. all feeding into an Arduino node that relays the data back to the master via LoRa/Wireless. 
 

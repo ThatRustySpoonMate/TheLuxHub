@@ -17,13 +17,13 @@
 // Peripheral Config
 #if DISPLAY == 0
     #define NUM_PAGES 0 // Number of pages to cycle through
-    #define ITEMS_ON_PAGE 0 // Number of items on each page
+    #define MAX_ITEMS_ON_PAGE 0 // Number of items on each page
     #define FIT_TWO_WIDE 0 // 0 = Disabled, 1 = Enabled
 #else if DISPLAY == 1
     #define NUM_PAGES 8 // Number of pages to cycle through
-    #define ITEMS_ON_PAGE 1 // Number of items on each page
+    #define MAX_ITEMS_ON_PAGE 1 // Number of items on each page
     #define FIT_TWO_WIDE 0 // 0 = Disabled, 1 = Enabled
-#endif
+#endif 
 
 
 #if ADC == 0
@@ -49,12 +49,12 @@
 /** Define struct --------------------------------------------------- **/
 struct WirelessDataSource {
   uint8_t packetID;         // ID of the Wireless packet to look for
-  uint32_t pollFreq : 500;  // Frequency to update this data source -- Likely not used and will be placed in widget instead
+  uint32_t pollFreq;  // Frequency to update this data source -- Likely not used and will be placed in widget instead
 };
 
 struct LoRaDataSource{
   uint8_t packetID;         // ID of the LORA packet to look for
-  uint32_t pollFreq : 500;  // Frequency to update this data source -- Likely not used and will be placed in widget instead
+  uint32_t pollFreq;  // Frequency to update this data source -- Likely not used and will be placed in widget instead
 };
 
 struct AnalogDataSource{
@@ -81,11 +81,18 @@ struct UIWidget {
 struct UIPage {
     uint8_t pageID;                         // Order of creation, starts at 0
     uint8_t widgetCountCurrent;             // Number of widgets on this page
-    uint8_t widgetCountMax = ITEMS_ON_PAGE; // Maximum Number of widgets on this page
-    UIWidget widgets[ITEMS_ON_PAGE];        // Widgets on this page
+    uint8_t widgetCountTotal = MAX_ITEMS_ON_PAGE; // Maximum Number of widgets on this page
+    #if FIT_TWO_WIDE == 1
+      uint8_t widgetCountHeight = MAX_ITEMS_ON_PAGE / 2;          // Number of widgets that can fit on this page
+    #else
+      uint8_t widgetCountHeight = MAX_ITEMS_ON_PAGE;          // Number of widgets that can fit on this page
+    #endif
+    UIWidget widgets[MAX_ITEMS_ON_PAGE];        // Widgets on this page, if 
 };
 
 struct Dashboard {
-    uint8_t pageCount;          // Number of pages
+    uint8_t pageCount;          // Total number of pages
+    uint8_t currentPage = 0;    // Current page -- index of the pages array
     UIPage pages[NUM_PAGES];    // Pages
+
 };
