@@ -4,7 +4,7 @@
 
 // Data source section
 AnalogDataSource EGTSensor;
-LoRaDataSource BatteryVoltage;
+LoRaDataSource StarterVoltage;
 LoRaDataSource CurrentSens1;
 
 
